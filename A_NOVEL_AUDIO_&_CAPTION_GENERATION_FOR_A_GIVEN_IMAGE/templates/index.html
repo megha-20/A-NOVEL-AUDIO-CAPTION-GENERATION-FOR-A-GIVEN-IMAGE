@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+
+		<title>Image Captioning</title>
+	
+	
+		<style type="text/css">
+			
+			.heading{
+			    font-weight: 100;
+			    font-size: 2em;
+			    text-shadow: 1px 1px 5px #918f7e;
+			}
+
+			img{
+				height: 40%;
+				width: 50%;
+				margin-left: 20px;
+			}
+			.text{
+				font-size: 32px;
+				font-style: italic;
+				color: #007bff;
+			}
+
+			body{
+				background-color: #d8edf2;
+				margin-top:0px;
+				margin-left: 0px;
+				margin-right: 0px;
+			}
+
+			.headline{
+				background-color: #0ac3f0;
+				margin: 0px;
+				padding: 20px;
+				margin-top: 0px;
+	
+			}
+
+			.form-inline{
+				padding-top:40px;
+				margin-left: 20px;
+			}
+
+			.btn-primary{
+				background-color: #0ac3f0;
+				padding:10px;
+				border-radius: 10px;
+				color: #fff;
+				border-color:#00637b;
+			}
+
+
+
+		</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="headline">
+	        <div class="container">
+	            <h1 class="heading"><center><b>A NOVEL AUDIO & CAPTION GENERATION FOR A GIVEN IMAGE</b></center></h1> 
+	            <p><center><em>Upload your Image to generate a caption and audio..</em></center></p> 
+	        </div>
+	    </div>
+	
+	
+
+		<form class="form-inline" enctype="multipart/form-data" action="/" method="POST">
+	        <label style="color: #007bff"><b>Image: &nbsp;&nbsp; </b></label>
+	        <input type="file" class="form-control" name="image">
+
+	        <button type="submit" class="btn-primary"> Submit</button>
+	    </form>
+
+	    <br>
+		
+
+	    {% if results %}
+	    	<div class="row">
+	    		<div class="col-sm-4">
+	    			<img src="{{results.image}}">
+	    		</div>
+	    		<div class="col-sm-8">
+
+	    			<p class="text" style="margin-left: 20px; margin-top: 10px; margin-bottom: 0px;">Generated Caption : </p>
+	    			<p style="margin-left: 20px; margin-top: 10px; margin-bottom: 0px;"><b> {{results.description}} </b> </p>
+	    			<br>
+	    			<audio controls style="margin-left: 20px">
+	    				<source src="{{results.sound}}" type="audio/mpeg">
+	    			</audio>
+	    		</div>
+	    {% endif %}
+
+	</div>
+
+
+</body>
+</html>
